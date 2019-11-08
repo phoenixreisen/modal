@@ -7,7 +7,7 @@ const Modal = {
     oninit(vnode) {
         const { attrs, children } = vnode;
         if(!attrs.content && !children.length) {
-            throw 'Modal without Content?';
+            throw 'Modal Content missing. Inject through "content" attribute/parameter or as children.';
         }
         if(attrs.size && !Sizes[attrs.size]) {
             throw 'Invalid modal size given. See Readme or modal.sizes.js for more information.'
