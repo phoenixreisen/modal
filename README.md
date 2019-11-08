@@ -1,6 +1,6 @@
-# Phoenix Tabs
+# Phoenix Modal
 
-Phoenix "Web Tabs"-Komponente auf Mithril-Basis.
+JS-/[Mithril](https://mithril.js.org/)-Komponente für das Phoenix Modal.
 
 Die Komponente ist Teil des [Phoenix Reisen Design-Systems](https://design-system.phoenixreisen.net).
 
@@ -9,35 +9,47 @@ Die Komponente ist Teil des [Phoenix Reisen Design-Systems](https://design-syste
 [Mithril](https://mithril.js.org/) wird benötigt.
 
 ```bash
-npm install --save @phoenixreisen/tabs
+npm install --save @phoenixreisen/modal
 ```
 
 ## Anwendung
 
 ```js
 // entweder CommonJS
-const Tabs = require('@phoenixreisen/tabs');
+const Modal = require('@phoenixreisen/modal');
 
 // oder ES6+
-import Tabs from '@phoenixreisen/tabs';
+import Modal from '@phoenixreisen/modal';
 ```
 
 #### Aufruf
 
+Das Modal selbst kümmert sich **nicht** um seinen Geöffnet-/Geschlossen-Status. Das muss außerhalb entschieden werden, indem eine Statusvariable dafür sorgt, ob das Modal gerendert wird oder nicht.
+
+Wenn keine Größe angegeben ist, passt sich das Modal bis zu seiner `max-width` und `max-height` an seinen Content an. Folgende **fixe Größen für Tablets und Desktops** können aber auch festgelegt werden.
+
+- s7590
+- s9090
+- s5050
+- s5075
+
 ```js
 // Hyperscript bzw. Javascript
-m(Tabs, 
-    { tabs: ['Tab 1', 'Tab 2'] }, 
-    [ m('div.tab1'), m('div.tab2') ]
-);
+m(Modal, {
+    size: 's9090',                      // optional
+    title: "Mein Modal",                // optional
+    withCloseText: false,               // optional
+    content: <div>CONTENT</div>,        // pflicht
+    footer: <div>FOOTER</div>,          // optional
+    toggle: () => state.show = false,   // optional
+});
 
 // JSX
-<Tabs tabs={['Tab 1', 'Tab 2']}>
-    {[
-        <div class="tab1">Tab 1</div>,
-        <div class="tab2">Tab 2</div>,
-    ]}
-</Tabs>
+<Modal title="Mein Modal" withCloseText={false}
+    toggle={() => state.show = false}
+    content={<div>CONTENT</div>}
+    footer={<div>FOOTER</div>}>
+</Modal>
 ```
 
 ## Test
