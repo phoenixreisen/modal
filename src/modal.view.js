@@ -68,4 +68,6 @@ const Modal = {
     },
 };
 
-module.exports = Modal;
+if(typeof module !== 'undefined') {
+    module.exports = Modal;
+}
