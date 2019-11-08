@@ -26,12 +26,14 @@ import Modal from '@phoenixreisen/modal';
 
 Das Modal selbst kümmert sich **nicht** um seinen Geöffnet-/Geschlossen-Status. Das muss außerhalb entschieden werden, indem eine Statusvariable dafür sorgt, ob das Modal gerendert wird oder nicht.
 
-Wenn keine Größe angegeben ist, passt sich das Modal bis zu seiner `max-width` und `max-height` an seinen Content an. Folgende **fixe Größen für Tablets und Desktops** können aber auch festgelegt werden.
+Wenn keine Größe angegeben ist, passt sich das Modal bis zu seiner `max-width` und `max-height` an seinen Content an. Folgende **fixe Größen für Tablets und Desktops** können aber auch festgelegt werden:
 
-- s7590
-- s9090
-- s5050
-- s5075
+- s7590 - 75% breit, 90% hoch
+- s9090 - 90% breit, 90% hoch
+- s5050 - 50% breit, 50% hoch
+- s5075 - 50% breit, 75% hoch
+
+Auf Smartphones nimmt das Modal immer 90% der Breite ein und wird bis zu 90% hoch.
 
 ```js
 // Hyperscript bzw. Javascript
