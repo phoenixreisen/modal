@@ -41,8 +41,8 @@ m(Modal, {
     size: 's9090',                      // optional
     title: "Mein Modal",                // optional
     withCloseText: false,               // optional
-    content: <div>CONTENT</div>,        // pflicht
-    footer: <div>FOOTER</div>,          // optional
+    content: m('div', 'CONTENT'),       // pflicht
+    footer: m('div', 'FOOTER'),         // optional
     toggle: () => state.show = false,   // optional
 });
 
