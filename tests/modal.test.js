@@ -3,8 +3,11 @@ const mq = require("mithril-query");
 const test = require("ospec");
 
 test.spec('#1 - Das Modal', () => {
-    const ModalView = require('../test/modal.view.js');
-    const state = { show: true };
+    const ModalView = require('../dist/modal.m.js').default;
+
+    const state = {
+        show: true
+    };
     const Modal = mq(m(ModalView, {
         title: "Test Modal",
         withCloseText: true,
@@ -41,7 +44,8 @@ test.spec('#1 - Das Modal', () => {
 });
 
 test.spec('#2 - Das Modal', () => {
-    const ModalView = require('../test/modal.view.js');
+    const ModalView = require('../dist/modal.m.js').default;
+
     const Modal = mq(m(ModalView, {
         title: "Zweites Modal",
         content: m('div', 'content'),
@@ -65,7 +69,7 @@ test.spec('#2 - Das Modal', () => {
 });
 
 test.spec('#3 - Das Modal', () => {
-    const ModalView = require('../test/modal.view.js');
+    const ModalView = require('../dist/modal.m.js').default;
 
     test('sollte ohne Content nicht aufrufbar sein', () => {
         let error = null;

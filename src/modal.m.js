@@ -2,7 +2,7 @@ import Sizes from './modal.sizes';
 
 let $body = null;
 
-const Modal = {
+export const Modal = {
 
     oninit(vnode) {
         const { attrs, children } = vnode;
@@ -68,6 +68,4 @@ const Modal = {
     },
 };
 
-if(typeof module !== 'undefined') {
-    module.exports = Modal;
-}
+export default Modal;
