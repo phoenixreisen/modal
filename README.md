@@ -64,6 +64,7 @@ npm run test
 ## Deployment
 
 ```bash
+[npm install]                       # Abhängigkeiten installieren
 npm version [major|minor|patch]     # increase version x.x.x => major.minor.patch
 npm publish                         # upload to npm
 git push

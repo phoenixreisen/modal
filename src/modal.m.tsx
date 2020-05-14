@@ -1,43 +1,53 @@
 import Sizes from './modal.sizes';
+import m from 'mithril';
 
-let $body = null;
+interface Attrs {
+    title: string,
+    content: any,
+    footer: any,
+    size: Sizes,
+    withCloseText: false,
+    toggle: () => void,
+}
 
-export const Modal = {
+let $body: HTMLElement | null = null;
 
-    oninit(vnode) {
-        const { attrs, children } = vnode;
+export const Modal: m.Component<Attrs> = {
+
+    oninit(v: m.Vnode<Attrs>) {
+        const attrs = v.attrs as Attrs;
+        const children = v.children as m.ChildArray;
+
         if(!attrs.content && !children.length) {
             throw 'Modal Content missing. Inject through "content" attribute/parameter or as children.';
-        }
-        if(attrs.size && !Sizes[attrs.size]) {
+        } else if(attrs.size && !Sizes[attrs.size]) {
             throw 'Invalid modal size given. See Readme or modal.sizes.js for more information.'
         }
-        document.addEventListener('keydown', (e) => {
-            const { toggle } = attrs;
-            if((e.keyCode === 27) && (typeof toggle === 'function')) {
-                toggle();
+        document.addEventListener('keydown', (e: KeyboardEvent) => {
+            if((e.keyCode === 27) && (typeof attrs.toggle === 'function')) {
+                attrs.toggle();
                 m.redraw();
             }
         });
     },
 
     oncreate() {
-        $body = document.querySelector('body');
+        $body = document.querySelector('body') as HTMLElement;
         if($body) {
-            $body.style.overflow='hidden';
+            $body.style.overflow = 'hidden';
         }
     },
 
     onremove() {
         if($body) {
-            $body.style.overflow='';
+            $body.style.overflow = '';
         }
     },
 
-    view(v) {
-        const { attrs } = v;
-        const { content, footer } = attrs;
-        const { toggle, title, size, withCloseText } = attrs;
+    view(v: m.Vnode<Attrs>) {
+        const {attrs} = v
+        const {content, footer} = attrs;
+        const {toggle, title, size, withCloseText} = attrs;
 
         return ([
             <article class={`modal modal--visible ${size ? size:''}`}>
@@ -58,9 +68,9 @@ export const Modal = {
                 </div>
 
                 {footer &&
-                <div class="modal__footer tr">
-                    {footer}
-                </div>
+                    <div class="modal__footer tr">
+                        {footer}
+                    </div>
                 }
             </article>,
             <article class="modal__bg"></article>,

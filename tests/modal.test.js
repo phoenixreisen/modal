@@ -1,6 +1,8 @@
-global.m = require('mithril');
+const m = require('mithril');
 const mq = require("mithril-query");
 const test = require("ospec");
+
+Object.assign(global, m);
 
 test.spec('#1 - Das Modal', () => {
     const ModalView = require('../dist/modal.m.js').default;
