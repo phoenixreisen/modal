@@ -24,8 +24,8 @@ export const Modal: m.Component<Attrs> = {
             throw 'Invalid modal size given. See Readme or modal.sizes.js for more information.'
         }
         document.addEventListener('keydown', (e: KeyboardEvent) => {
-            if((e.keyCode === 27) && (typeof attrs.toggle === 'function')) {
-                attrs.toggle();
+            if(e.keyCode === 27) {
+                attrs.toggle?.();
                 m.redraw();
             }
         });
@@ -50,7 +50,7 @@ export const Modal: m.Component<Attrs> = {
         const {toggle, title, size, withCloseText} = attrs;
 
         return ([
-            <article class={`modal modal--visible ${size ? size:''}`}>
+            <article class={`modal modal--visible ${size || ''}`}>
                 <div class="modal__header">
                     <span class="modal__headline">
                         {title || ''}
