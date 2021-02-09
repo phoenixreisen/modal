@@ -1,6 +1,8 @@
 import Sizes from './modal.sizes';
 import m from 'mithril';
 
+//--- Types -----
+
 interface Attrs {
     title: string,
     content: any,
@@ -10,7 +12,11 @@ interface Attrs {
     toggle: () => void,
 }
 
+//--- Variablen & Nodes -----
+
 let $body: HTMLElement | null = null;
+
+//--- Komponente -----
 
 export const Modal: m.Component<Attrs> = {
 
@@ -76,6 +82,6 @@ export const Modal: m.Component<Attrs> = {
             <article class="modal__bg"></article>,
         ]);
     },
-};
+} as any;
 
 export default Modal;
