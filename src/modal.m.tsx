@@ -1,3 +1,5 @@
+/** @jsx m */
+
 import Sizes from './modal.sizes';
 import m from 'mithril';
 
