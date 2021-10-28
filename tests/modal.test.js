@@ -53,7 +53,7 @@ test.spec('#2 - Das Modal', () => {
         content: m('div', 'content'),
     }));
 
-    test('sollte nicht "schließen" enhalten', () => {
+    test('sollte nicht "schließen" enthalten', () => {
         test(Modal.should.not.contain('schließen')).equals(true);
     });
     test('sollte nicht über die Titelleiste togglebar sein', () => {
